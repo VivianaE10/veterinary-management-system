@@ -30,6 +30,16 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
+  @Get('cedula/:cedula')
+  findByCedula(@Param('cedula') cedula: string) {
+    return this.usersService.findByCedula(cedula);
+  }
+
+  @Get('correo/:correo')
+  findByCorreo(@Param('correo') correo: string) {
+    return this.usersService.findByCorreo(correo);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
