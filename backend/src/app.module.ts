@@ -18,7 +18,7 @@ import { DocumentsModule } from './documents/documents.module';
       password: '',
       database: 'sistema_gestion_veterinaria',
       autoLoadEntities: true, // Carga automáticamente las entidades
-      synchronize: true,
+      synchronize: false, // Sincroniza la base de datos con las entidades (no recomendado para producción)
     }),
     UsersModule,
     PetsModule,

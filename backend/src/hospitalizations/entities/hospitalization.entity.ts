@@ -1,3 +1,4 @@
+
 import { Pet } from 'src/pets/entities/pet.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -7,10 +8,10 @@ export class Hospitalization {
   id: number;
 
   @Column()
-  fechaIngreso: Date;
+  fecha_ingreso: Date;
 
   @Column()
-  fechaSalida: Date;
+  fecha_salida: Date;
 
   @Column()
   dias: number;
