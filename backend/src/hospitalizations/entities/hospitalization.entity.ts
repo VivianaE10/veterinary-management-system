@@ -1,4 +1,3 @@
-
 import { Pet } from 'src/pets/entities/pet.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
