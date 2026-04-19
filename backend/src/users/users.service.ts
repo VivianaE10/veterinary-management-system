@@ -19,8 +19,8 @@ export class UsersService {
 
     //crear el usuario con la contaseña segura
     const user = this.usersRepository.create({
-      ...createUserDto,
-      contraseña: hashedPassword,
+      ...createUserDto, //me tare tdodos los datos
+      contraseña: hashedPassword, // remplaza la contaseña por la incriptada
     });
     return this.usersRepository.save(user);
   }
