@@ -11,24 +11,30 @@ export class AuthService {
   ) {}
 
   async login(correo: string, contraseña: string) {
-    const user = await this.usersService.findByCorreo(correo);
+    try {
+      const user = await this.usersService.findByCorreo(correo);
 
-    if (!user) {
-      throw new UnauthorizedException('El usuario no existe');
+      if (!user) {
+        console.log('NO USER');
+        throw new UnauthorizedException('Usuario no existe');
+      }
+
+      const isMatch = await bcrypt.compare(contraseña, user.contraseña);
+      console.log('MATCH:', isMatch);
+
+      if (!isMatch) {
+        console.log('PASSWORD INCORRECTA');
+        throw new UnauthorizedException('Contraseña incorrecta');
+      }
+
+      const payload = { sub: user.id, correo: user.correo };
+
+      return {
+        access_token: this.jwtService.sign(payload),
+      };
+    } catch (error) {
+      console.error('ERROR REAL 👉', error);
+      throw error;
     }
-
-    const isMatch = await bcrypt.compare(contraseña, user.contraseña);
-    console.log('MATCH:', isMatch);
-
-    if (!isMatch) {
-      throw new UnauthorizedException('Contaseña incorrecta');
-    }
-    console.log('SECRET:', process.env.JWT_SECRET);
-    //payload es la informacion que guardo dentro del token
-    const payload = { sub: user.id, correo: user.correo }; //sub significa sujeto y se utiliza para identificarlo a ese usuario por id y contraseña
-
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
   }
 }
