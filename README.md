@@ -72,10 +72,6 @@ veterinary-management-system/
 ├── database/ # Scripts de base de datos
 └── README.md # Documentación principal
 
----
-
----
-
 ## ⚙️ Funcionalidades implementadas
 
 ### 🔐 Autenticación
@@ -120,13 +116,13 @@ veterinary-management-system/
 
 ### Usuarios
 
-GET /users
-GET /users/:id
-GET /users/correo/:correo
-GET /users/cedula/:cedula
-POST /users
-PATCH /users/:id
-DELETE /users/:id
+- GET /users
+- GET /users/:id
+- GET /users/correo/:correo
+- GET /users/cedula/:cedula
+- POST /users
+- PATCH /users/:id
+- DELETE /users/:id
 
 ---
 
